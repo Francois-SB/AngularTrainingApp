@@ -1,5 +1,4 @@
-<div>
-    <button (click)="displayTrainings()"> Formations</button>
+<div class="p-4">
     <ng-container *ngIf="listTrainings">
         <table class="table-auto shadow-md border-spacing-x-1.5 border-spacing-y-1.5">
             <tr class="bg-slate-200">
@@ -10,10 +9,9 @@
                 <td>{{training.name}}</td>
                 <td>{{training.description}}</td>
                 <td>{{training.price}}</td>
+                <td> <input type="number" name="quantity" style="width: 60px" [(ngModel)]="training.quantity"></td>
+                <td> <a class="rounded-full bg-blue-400 hover:bg-blue-800 min-w-200" (click)="onAddToCart(training)">Ajouter</a></td>
             </tr>
         </table>
-        <h1 class="text-3xl font-bold underline">
-            Hello world!
-          </h1>
     </ng-container>
-</div>>
+</div>
