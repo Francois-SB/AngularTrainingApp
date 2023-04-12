@@ -3,13 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 /* import { AppRoutingModule } from './app-routing.module'; */
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { TrainingsComponent } from './components/trainings/trainings.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TrainingsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
     /* AppRoutingModule */
   ],
   providers: [],
