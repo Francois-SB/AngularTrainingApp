@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Training } from 'src/app/model/training.model';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-trainings',
   templateUrl: './trainings.component.html',
@@ -21,6 +22,6 @@ export class TrainingsComponent implements OnInit {
 
   onAddToCart(training:Training) {
     this.cartService.addTraining(training);
-    this.router.navigateByUrl('.cart');
+    this.router.navigateByUrl('cart');
   }
 }

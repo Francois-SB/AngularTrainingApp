@@ -1,1 +1,16 @@
-<p>cart works!</p>
+<div class="md:container md:mx-auto p-4">
+    <ng-container *ngIf="cartList">
+        <table class="table-auto shadow-md border-spacing-x-1.5 border-spacing-y-1.5">
+            <tr class="bg-slate-200">
+                <th>ID</th><th>name</th><th>quantity</th><th>price</th>
+            </tr>
+            <tr *ngFor="let training of cartList" class="border-spacing-x-1.5 border-spacing-y-1.5">
+                <td>{{training.id}}</td>
+                <td>{{training.name}}</td>
+                <td>{{training.quantity}}</td>
+                <td>{{training.price}}</td>
+                <td> <a class="rounded-full bg-red-400 hover:bg-red-800 min-w-200" (click)="onRmTraining(training.id)">Supprimer</a></td>
+            </tr>
+        </table>
+    </ng-container>
+</div>

@@ -5,18 +5,30 @@ import { Training } from '../model/training.model';
   providedIn: 'root'
 })
 export class CartService {
-  public cartTrainingList: Map<number, Training>;
+  public cart: Map<number, Training>;
   /* listCartTrainings : Training[] | undefined; */
   constructor() { 
-    this.cartTrainingList = new Map<number,Training>
+    this.cart = new Map<number,Training>
   }
 
   addTraining(training:Training){
     //s'il existe => modif qté
-    const trainingCartLine = this.cartTrainingList.get(training.id) ;
+    const trainingCartLine = this.cart.get(training.id) ;
     if(trainingCartLine) trainingCartLine.quantity = training.quantity;
     //s'il n'existe pas => add line
-    else this.cartTrainingList.set(training.id,training);
+    else this.cart.set(training.id,training);
 }
+  rmTraining(id:number){
+    const trainingCartLine = this.cart.get(id) ;
+    if(trainingCartLine) {
+      this.cart.delete(id);
+      console.log("cart : "+this.cart.size)
+    }
+  }
 
+  getCart(){
+    let cartValues = new Array<Training>();
+    cartValues = Array.from(this.cart.values());
+    return cartValues;
+  }
 }
