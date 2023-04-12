@@ -1,16 +1,19 @@
 <div>
     <button (click)="displayTrainings()"> Formations</button>
     <ng-container *ngIf="listTrainings">
-        <table>
-            <tr>
+        <table class="table-auto shadow-md border-spacing-x-1.5 border-spacing-y-1.5">
+            <tr class="bg-slate-200">
                 <th>ID</th><th>name</th><th>description</th><th>price</th>
             </tr>
-            <tr *ngFor="let training of listTrainings">
+            <tr *ngFor="let training of listTrainings" class="border-spacing-x-1.5 border-spacing-y-1.5">
                 <td>{{training.id}}</td>
                 <td>{{training.name}}</td>
                 <td>{{training.description}}</td>
                 <td>{{training.price}}</td>
             </tr>
         </table>
+        <h1 class="text-3xl font-bold underline">
+            Hello world!
+          </h1>
     </ng-container>
 </div>>
