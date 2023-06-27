@@ -25,4 +25,6 @@ export class CartComponent implements OnInit {
     //this.ngOnInit;//recharger la div
     if (this.cartList?.length == 0 ) this.router.navigateByUrl('trainings');
   }
+
+  
 }

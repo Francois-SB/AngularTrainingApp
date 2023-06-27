@@ -7,17 +7,14 @@ import { Training } from '../model/training.model';
 export class CartService {
   public cart: Map<number, Training>;
   private keyCart = "keyCartMyShop";
-  /* listCartTrainings : Training[] | undefined; */
+  
   constructor() { 
     this.cart = new Map<number,Training>
     //constructor appellé lors de la creation du service donc check si panier ds locale
-    if(localStorage.getItem(this.keyCart)){
-      let localCart = localStorage.getItem(this.keyCart);//string
-      //string => Map
-    
-      this.cart = JSON.parse(localCart,reviver);
-    }
-
+    /*if(localStorage.getItem(this.keyCart)?.length != 0){ 
+      this.cart = JSON.parse(this.keyCart);//TODO ,reviver
+    }*/
+    console.log("localCart Const: "+localStorage.getItem(this.keyCart))
   }
 
   /**Ajout training dans panier service (panier #Map) et maj locale
@@ -32,7 +29,7 @@ export class CartService {
     else this.cart.set(training.id,training);
 
     //maj locale
-    this.majLocale();
+    /* this.majLocale(); */
 }
   rmTraining(id:number){
     const trainingCartLine = this.cart.get(id) ;
@@ -42,7 +39,7 @@ export class CartService {
     }
 
     //maj locale
-    this.majLocale();
+    /* this.majLocale(); */
   }
 
   getCart(){
@@ -54,8 +51,9 @@ export class CartService {
   majLocale(){
     if(localStorage.getItem(this.keyCart)){
       localStorage.removeItem(this.keyCart);
-      if(this.cart.size != 0) localStorage.setItem(this.keyCart,JSON.stringify(this.cart,replacer));
+      if(this.cart.size != 0) localStorage.setItem(this.keyCart,JSON.stringify(this.cart));//TODO ,replacer
     }
+    console.log("localCart Func: "+localStorage.getItem(this.keyCart))
   }
   
 /**sauvegarde du panier lors de la fermeture (ou unfocus) de la fenetre
