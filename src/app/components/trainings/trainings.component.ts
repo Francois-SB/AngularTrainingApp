@@ -12,11 +12,16 @@ import { TrainingService } from 'src/app/services/training.service';
 })
 export class TrainingsComponent implements OnInit {
   listTrainings : Training[] | undefined;
+  error = null;
   constructor(private cartService : CartService, private router : Router, private trainingService : TrainingService){ }
 
   ngOnInit(): void {
-    this.trainingService.getTrainings().subscribe((datas) =>{
-      this.listTrainings=datas as Training[];
+    this.trainingService.getTrainings().subscribe({
+      next: (data) => {
+this.listTrainings = data as Training[];
+      },
+      error: (err) => this.error = err.message,
+      complete: () => this.error = null
     })
    // this.listTrainings =[
   //
@@ -29,5 +34,11 @@ export class TrainingsComponent implements OnInit {
   onAddToCart(training:Training) {
     this.cartService.addTraining(training);
     this.router.navigateByUrl('cart');
+  }
+
+  onDelTrainings(training:Training){
+    this.trainingService.delTraining(training);
+    console.log("training"+training.name);
+    
   }
 }
