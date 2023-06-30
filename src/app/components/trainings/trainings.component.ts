@@ -41,4 +41,8 @@ this.listTrainings = data as Training[];
     console.log("training"+training.name);
     
   }
+  onUpdateTraining(training:Training){
+    this.trainingService.trainingTemp=training;
+    this.router.navigateByUrl('cu-trainings');
+  }
 }

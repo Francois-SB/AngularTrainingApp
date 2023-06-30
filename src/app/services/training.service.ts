@@ -9,9 +9,10 @@ export class TrainingService {
 
   readonly API_URL = "http://localhost:8080/api"
   readonly DEADPOINT_TRAININGS = "/trainings/"//TODO deuxieme / à test
+  trainingTemp: Training | undefined;
   constructor(private http: HttpClient) { }
 
-  public getTrainings() {
+  public getTrainings() {//TODO with subscribe
     return this.http.get(this.API_URL + this.DEADPOINT_TRAININGS)
   }
   public postTraining(training: any) {
